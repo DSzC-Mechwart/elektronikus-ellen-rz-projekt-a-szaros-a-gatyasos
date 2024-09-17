@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/ellenorzowpf2/Feladat.cs
+/ellenorzowpf2/Feladatok.cs

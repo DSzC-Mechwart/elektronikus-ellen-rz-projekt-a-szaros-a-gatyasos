@@ -8,6 +8,6 @@ namespace ellenorzowpf2
 {
     internal class Feladat
     {
-
+        
     }
 }

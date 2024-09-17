@@ -8,7 +8,7 @@ namespace ellenorzowpf2
 {
     internal class Tantargy
     {
-        public Tantargy(string tantargyak, int evfolyam, string kozvszak, int hetioraszam)
+        public Tantargy(string tantargyak, string evfolyam, string kozvszak, string hetioraszam)
         {
             Tantargyak = tantargyak;
             Evfolyam = evfolyam;
@@ -16,10 +16,10 @@ namespace ellenorzowpf2
             Hetioraszam = hetioraszam;
         }
 
-        string Tantargyak { get; set; }
-        int Evfolyam { get; set; }
-        string Kozvszak { get; set; }
-        int Hetioraszam { get; set; }
+        public string Tantargyak { get; set; }
+        public string Evfolyam { get; set; }
+        public string Kozvszak { get; set; }
+        public string Hetioraszam { get; set; }
     }
 }
-}
+

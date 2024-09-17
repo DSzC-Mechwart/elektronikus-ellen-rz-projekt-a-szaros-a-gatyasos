@@ -20,5 +20,20 @@ namespace ellenorzowpf2
         {
             InitializeComponent();
         }
+
+        List<Tantargy> adatok = new List<Tantargy>();
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Feladat1();
+        }
+        public void Feladat1()
+        {
+            string tantargyak = tantargyInput.Text;
+            string evfolyam = evfolyamInput.Text;
+            string kozvSzak = kozvszakInput.Text;
+            string hetioraszam = hetioraszamInput.Text;
+            
+        }
     }
 }
