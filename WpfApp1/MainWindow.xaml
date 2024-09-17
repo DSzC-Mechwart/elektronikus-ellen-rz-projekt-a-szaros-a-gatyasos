@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel x:Name="LoginScreen" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Bejelentkezés" FontSize="20" Margin="0,0,0,10" />
+            <TextBox x:Name="StudentNameInput" Width="200" Height="30" PlaceholderText="Tanuló neve" Margin="0,0,0,10" />
+            <Button Content="Bejelentkezés" Width="100" Click="BejelentkezesGomb_Click"/>
+        </StackPanel>
 
+        <StackPanel x:Name="GradeInputScreen" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="Jegy hozzáadása" FontSize="20" Margin="0,0,0,10" />
+            <ComboBox x:Name="SubectComboBox" Width="200" Height="30" Margin="0,0,0,10" />
+        </StackPanel>
     </Grid>
 </Window>
