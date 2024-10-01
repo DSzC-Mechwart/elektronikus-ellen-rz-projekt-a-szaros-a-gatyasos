@@ -5,33 +5,27 @@
     <Grid>
         <StackPanel>
 
-            <!-- Tanuló kiválasztása -->
             <TextBlock Text="Válassz egy tanulót:" FontWeight="Bold" Margin="10"/>
             <ComboBox x:Name="tanuloComboBox" DisplayMemberPath="Nev" SelectionChanged="tanuloComboBox_SelectionChanged" Margin="10"/>
 
-            <!-- Tantárgy kiválasztása -->
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Tantárgyak:" FontWeight="Bold" Margin="10"/>
                 <ComboBox x:Name="targyComboBox" DisplayMemberPath="Nev" Margin="10"/>
             </StackPanel>
 
-            <!-- Jegy hozzáadása -->
             <TextBlock Text="Adj hozzá jegyet:" FontWeight="Bold" Margin="10"/>
             <StackPanel Orientation="Horizontal" Margin="10">
 
-                <!-- Jegy értéke -->
                 <StackPanel Margin="10">
                     <TextBlock Text="Jegy értéke" FontWeight="Bold"/>
                     <TextBox x:Name="jegyErtekTextBox" Width="100"/>
                 </StackPanel>
 
-                <!-- Téma -->
                 <StackPanel Margin="10">
                     <TextBlock Text="Téma" FontWeight="Bold"/>
                     <TextBox x:Name="jegyTemaTextBox" Width="200"/>
                 </StackPanel>
 
-                <!-- Számonkérés típusa -->
                 <StackPanel Margin="10">
                     <TextBlock Text="Számonkérés típusa" FontWeight="Bold"/>
                     <TextBox x:Name="szamonkeresTipusTextBox" Width="200"/>
@@ -40,11 +34,9 @@
                 <Button Content="Jegy hozzáadása" Click="AddJegy_Click" Margin="10"/>
             </StackPanel>
 
-            <!-- Átlagok listázása -->
             <TextBlock Text="Átlagok:" FontWeight="Bold" Margin="10"/>
             <ListBox x:Name="jegyekListBox" Margin="10"/>
 
-            <!-- Lemorzsolódás jelzés -->
             <CheckBox x:Name="lemorzsolodasCheckBox" Content="Lemorzsolódással veszélyeztetett" IsEnabled="False" Margin="10"/>
             <Button Content="Admin nézet" Click="AdminButton_Click" Margin="10"/>
         </StackPanel>

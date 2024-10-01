@@ -5,15 +5,12 @@
     <Grid>
         <StackPanel>
 
-            <!-- Tantárgyak és tantárgyi átlagok listája -->
             <TextBlock Text="Tantárgyak és átlagok:" FontWeight="Bold" Margin="10"/>
             <ListBox x:Name="targyAtlagokListBox" Margin="10"/>
 
-            <!-- Tanulók és összesített átlagok listája -->
             <TextBlock Text="Tanulók és összesített átlagok:" FontWeight="Bold" Margin="10"/>
             <ListBox x:Name="tanuloAtlagokListBox" Margin="10"/>
 
-            <!-- Bezárás gomb -->
             <Button Content="Bezárás" Click="CloseButton_Click" Margin="10"/>
         </StackPanel>
     </Grid>

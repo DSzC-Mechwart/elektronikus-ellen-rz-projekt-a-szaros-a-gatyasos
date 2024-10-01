@@ -15,7 +15,6 @@ namespace TanuloApp
         public MainWindow()
         {
             InitializeComponent();
-            // Kezdeti tanulóadatok hozzáadása
             tanulok = new List<Tanulo>
             {
                 new Tanulo { Nev = "Kiss Péter", Targyak = new List<Targy>

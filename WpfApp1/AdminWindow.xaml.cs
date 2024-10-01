@@ -16,7 +16,6 @@ namespace TanuloApp
             targyAtlagokListBox.Items.Clear();
             tanuloAtlagokListBox.Items.Clear();
 
-            // Tantárgyak átlagainak megjelenítése
             foreach (var tanulo in tanulok)
             {
                 foreach (var targy in tanulo.Targyak)
@@ -24,7 +23,6 @@ namespace TanuloApp
                     targyAtlagokListBox.Items.Add($"{targy.Nev}: Átlag - {targy.Atlag:F2}");
                 }
 
-                // Tanulók összesített átlagainak megjelenítése
                 tanuloAtlagokListBox.Items.Add($"{tanulo.Nev}: Összesített átlag - {tanulo.OsszesitettAtlag:F2}");
             }
         }
