@@ -1,21 +1,37 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 
-namespace WpfApp1
+namespace TanuloApp
 {
     public partial class AdminWindow : Window
     {
-        public AdminWindow()
+        public AdminWindow(List<Tanulo> tanulok)
         {
             InitializeComponent();
-            LoadSubjectAverages();
+            MegjelenitAtlagokat(tanulok);
         }
 
-        private void LoadSubjectAverages()
+        private void MegjelenitAtlagokat(List<Tanulo> tanulok)
         {
-            SubjectAverageList.Items.Add("Matematika: 4.5");
-            SubjectAverageList.Items.Add("Történelem: 3.7");
-            SubjectAverageList.Items.Add("Fizika: 4.0");
-            SubjectAverageList.Items.Add("Informatika: 3.2");
+            targyAtlagokListBox.Items.Clear();
+            tanuloAtlagokListBox.Items.Clear();
+
+            // Tantárgyak átlagainak megjelenítése
+            foreach (var tanulo in tanulok)
+            {
+                foreach (var targy in tanulo.Targyak)
+                {
+                    targyAtlagokListBox.Items.Add($"{targy.Nev}: Átlag - {targy.Atlag:F2}");
+                }
+
+                // Tanulók összesített átlagainak megjelenítése
+                tanuloAtlagokListBox.Items.Add($"{tanulo.Nev}: Összesített átlag - {tanulo.OsszesitettAtlag:F2}");
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

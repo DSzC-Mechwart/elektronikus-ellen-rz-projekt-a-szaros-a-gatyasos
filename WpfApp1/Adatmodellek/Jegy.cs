@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WpfApp1.Adatmodellek
+﻿namespace TanuloApp
 {
-    internal class Jegy
+    public class Jegy
     {
+        public double Ertek { get; set; }
+        public string Tema { get; set; }
+        public string SzamonkeresTipus { get; set; }
     }
 }
