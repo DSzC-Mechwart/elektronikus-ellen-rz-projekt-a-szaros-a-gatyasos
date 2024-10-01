@@ -8,12 +8,13 @@ namespace ellenorzowpf2
 {
     internal class Tantargy
     {
-        public Tantargy(string tantargyak, int evfolyam, string kozvszak, int hetioraszam)
+        public Tantargy(string tantargyak, int evfolyam, string kozvszak, int hetioraszam, int evesOraSzam)
         {
             Tantargyak = tantargyak;
             Evfolyam = evfolyam;
             Kozvszak = kozvszak;
             Hetioraszam = hetioraszam;
+            EvesOraSzam = evesOraSzam;
         }
 
         public string Tantargyak { get; set; }
@@ -21,28 +22,6 @@ namespace ellenorzowpf2
         public string Kozvszak { get; set; }
         public int Hetioraszam { get; set; }
         public int EvesOraSzam { get; set; }
-        /*public int EvesOraszamFugg(int szam)
-        {
-            if (Evfolyam == 11 || Evfolyam == 10 || Evfolyam == 9)
-            {
-                return Hetioraszam * 36;
-            }
-            else if (Evfolyam == 12)
-            {
-                if (Kozvszak == "k")
-                {
-                    return Hetioraszam * 31;
-                }
-                else if (Kozvszak == "sz")
-                {
-                    return Hetioraszam * 36;
-                }
-            }
-            else
-            {
-                return Hetioraszam * 31;
-            }
-        }*/
     }
 
 }

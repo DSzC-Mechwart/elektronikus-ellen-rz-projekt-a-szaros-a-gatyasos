@@ -30,21 +30,36 @@ namespace ellenorzowpf2
 
         public void Feladat1()
         {
-            string tantargyak = tantargyInput.Text;
-            int evfolyam = Convert.ToInt32(evfolyamInput.Text);
-            string kozvSzak = kozvszakInput.Text;
-            int hetioraszam = Convert.ToInt32(hetioraszamInput.Text);
-            //int evesoraszam =0;
+            string tantargyak = comboboxTan.Text;
+            int evfolyam = Convert.ToInt32(comboboxOszt.Text);
+            string kozvSzak = comboboxkozszak.Text;
+            int hetioraszam = Convert.ToInt32(oraszamInput.Text);
+            int evesoraszam =0;
             
-            Tantargy uj = new(tantargyak, evfolyam, kozvSzak, hetioraszam);
+            Tantargy uj = new(tantargyak, evfolyam, kozvSzak, hetioraszam, evesoraszam);
 
-            /*foreach (var item in adatok)
-            {
-                evesoraszam =  item.EvesOraszamFugg(hetioraszam);
-                adatok.Add(item);
-            }
-            adatok.Add(uj);
-            evesoszamLabel.Content = evesoraszam;*/
+                if (evfolyam == 9 || evfolyam == 10 || evfolyam == 11)
+                {
+                    evesoraszam = hetioraszam * 36;
+                    
+                }
+                else if (evfolyam == 12)
+                {
+                    if (kozvSzak == "Közismeret")
+                    {
+                        evesoraszam = hetioraszam * 31;
+                    }
+                    else
+                    {
+                        evesoraszam = hetioraszam * 36;
+                    }
+                }
+                else
+                {
+                    evesoraszam = hetioraszam * 31;
+                }
+            
+            evesoszamLabel.Content = evesoraszam;
             adatok.Add(uj);
         }
         public void Feladat2()
