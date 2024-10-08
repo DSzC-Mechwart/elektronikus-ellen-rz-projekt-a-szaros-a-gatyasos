@@ -1,5 +1,6 @@
 ﻿using Adatmodellek;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -50,6 +51,7 @@ namespace WpfApp1
             kivalasztottTanulo = tanuloComboBox.SelectedItem as Tanulo;
             targyComboBox.ItemsSource = kivalasztottTanulo?.Targyak;
             FrissitJegyek();
+            FrissitLemorzsolodas();
         }
 
         private void AddJegy_Click(object sender, RoutedEventArgs e)
@@ -73,8 +75,19 @@ namespace WpfApp1
         {
             if (kivalasztottTanulo != null)
             {
-                int failingSubjectsCount = kivalasztottTanulo.Targyak.Count(t => t.Atlag < 1.75);
-                lemorzsolodasCheckBox.IsChecked = failingSubjectsCount >= 3;
+                bool isAtRisk = false;
+
+                foreach (var targy in kivalasztottTanulo.Targyak)
+                {
+                    double atlag = targy.Atlag;
+                    if (atlag < 1.75)
+                    {
+                        isAtRisk = true;
+                        break;
+                    }
+                }
+
+                lemorzsolodasCheckBox.IsChecked = isAtRisk;
             }
         }
 
