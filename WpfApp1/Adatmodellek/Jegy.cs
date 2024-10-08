@@ -1,4 +1,4 @@
-﻿namespace TanuloApp
+﻿namespace Adatmodellek
 {
     public class Jegy
     {

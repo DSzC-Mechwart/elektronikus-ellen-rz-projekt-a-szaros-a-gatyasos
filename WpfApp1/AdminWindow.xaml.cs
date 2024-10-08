@@ -1,35 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
+using System.Collections.Generic;
+using Adatmodellek;
 
-namespace TanuloApp
+namespace WpfApp1
 {
     public partial class AdminWindow : Window
     {
+        private List<Tanulo> tanulok;
+
         public AdminWindow(List<Tanulo> tanulok)
         {
             InitializeComponent();
-            MegjelenitAtlagokat(tanulok);
-        }
-
-        private void MegjelenitAtlagokat(List<Tanulo> tanulok)
-        {
-            targyAtlagokListBox.Items.Clear();
-            tanuloAtlagokListBox.Items.Clear();
-
-            foreach (var tanulo in tanulok)
-            {
-                foreach (var targy in tanulo.Targyak)
-                {
-                    targyAtlagokListBox.Items.Add($"{targy.Nev}: Átlag - {targy.Atlag:F2}");
-                }
-
-                tanuloAtlagokListBox.Items.Add($"{tanulo.Nev}: Összesített átlag - {tanulo.OsszesitettAtlag:F2}");
-            }
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            this.tanulok = tanulok;
+            dataGridStudents.ItemsSource = tanulok;
         }
     }
 }

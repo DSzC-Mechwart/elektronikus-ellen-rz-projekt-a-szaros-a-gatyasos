@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Adatmodellek;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace TanuloApp
+namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
         private List<Tanulo> tanulok;
         private Tanulo kivalasztottTanulo;
-        private Targy kivalasztottTargy;
 
         public MainWindow()
         {
@@ -51,12 +50,11 @@ namespace TanuloApp
             kivalasztottTanulo = tanuloComboBox.SelectedItem as Tanulo;
             targyComboBox.ItemsSource = kivalasztottTanulo?.Targyak;
             FrissitJegyek();
-            FrissitLemorzsolodas();
         }
 
         private void AddJegy_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(jegyErtekTextBox.Text, out double ertek) && kivalasztottTargy != null)
+            if (double.TryParse(jegyErtekTextBox.Text, out double ertek) && targyComboBox.SelectedItem is Targy kivalasztottTargy)
             {
                 var jegy = new Jegy
                 {
@@ -70,6 +68,16 @@ namespace TanuloApp
                 FrissitLemorzsolodas();
             }
         }
+
+        private void FrissitLemorzsolodas()
+        {
+            if (kivalasztottTanulo != null)
+            {
+                int failingSubjectsCount = kivalasztottTanulo.Targyak.Count(t => t.Atlag < 1.75);
+                lemorzsolodasCheckBox.IsChecked = failingSubjectsCount >= 3;
+            }
+        }
+
 
         private void FrissitJegyek()
         {
@@ -85,15 +93,9 @@ namespace TanuloApp
             }
         }
 
-        private void FrissitLemorzsolodas()
-        {
-            lemorzsolodasCheckBox.IsChecked = kivalasztottTanulo.LemorzsolodassalVeszelyeztetett;
-        }
-
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            var adminWindow = new AdminWindow(tanulok);
-            adminWindow.Show();
+            MessageBox.Show("Admin nézet megnyitása.");
         }
     }
 }
