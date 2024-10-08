@@ -48,6 +48,8 @@
             <ComboBoxItem Content="Szakma"/>
         </ComboBox>
         <TextBox HorizontalAlignment="Left" Margin="160,195,0,0" TextWrapping="Wrap" x:Name="oraszamInput" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Törlés" HorizontalAlignment="Left" Margin="84,371,0,0" VerticalAlignment="Top" Click="JsTorles_Click"/>
+        <Button Content="Törlés" HorizontalAlignment="Left" Margin="280,371,0,0" VerticalAlignment="Top" Click="CsvTorles_Click"/>
 
     </Grid>
 </Window>
