@@ -70,11 +70,10 @@ namespace ellenorzowpf2
         public void Feladat2()
         {
             Feladat1();
-            string json = JsonSerializer.Serialize(adatok);
+            string json = JsonSerializer.Serialize(AllData);
             string file = System.IO.Directory.GetCurrentDirectory();
             File.WriteAllText($@"{file}\tantargy.json", json, Encoding.UTF8);
             adatok.Clear();
-            
         }
         public void Feladat3()
         {
@@ -98,14 +97,37 @@ namespace ellenorzowpf2
         
         private void JsTorles_Click(object sender, RoutedEventArgs e)
         {
-            
+            string fileName = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "tantargy.json");
+            if (File.Exists(fileName))
+            {
+                string json = File.ReadAllText(fileName);
+                List<Tantargy> data = JsonSerializer.Deserialize<List<Tantargy>>(json);
+
+                if (data != null && data.Count > 0)
+                {
+                    data.RemoveAt(data.Count - 1);
+
+                    string updatedJson = JsonSerializer.Serialize(data);
+                    File.WriteAllText(fileName, updatedJson, Encoding.UTF8);
+                }
+            }
         }
 
         private void CsvTorles_Click(object sender, RoutedEventArgs e)
         {
+            string fileName = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "tantargy.csv");
 
-            
-            
+            if (File.Exists(fileName))
+            {
+                var lines = File.ReadAllLines(fileName).ToList();
+
+                if (lines.Count > 0)
+                {
+                    lines.RemoveAt(lines.Count - 1);
+
+                    File.WriteAllLines(fileName, lines); 
+                }
+            }
         }
     }
     
