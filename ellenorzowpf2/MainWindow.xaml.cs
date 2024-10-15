@@ -125,9 +125,19 @@ namespace ellenorzowpf2
                 {
                     lines.RemoveAt(lines.Count - 1);
 
-                    File.WriteAllLines(fileName, lines); 
+                    File.WriteAllLines(fileName, lines, Encoding.UTF8); 
                 }
             }
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in AllData)
+            {
+               int kozism= AllData.Where(x => x.Kozvszak == "Közismeret").GroupBy(x=>x.Evfolyam).Count();
+               int szakma = AllData.Where(x => x.Kozvszak == "Szakma").GroupBy(x => x.Evfolyam).Count();
+            }
+
         }
     }
     
