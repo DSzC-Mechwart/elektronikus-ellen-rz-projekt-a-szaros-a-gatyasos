@@ -1,4 +1,5 @@
 ﻿using Adatmodellek;
+using System.Collections.Generic;
 
 public class Targy
 {
@@ -10,7 +11,6 @@ public class Targy
         get
         {
             if (Jegyek.Count == 0) return 0;
-
             double sum = 0;
             foreach (var jegy in Jegyek)
             {

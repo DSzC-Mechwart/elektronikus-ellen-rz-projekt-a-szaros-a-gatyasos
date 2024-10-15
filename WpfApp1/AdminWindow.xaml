@@ -3,11 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Admin Window" Height="400" Width="600">
     <Grid>
-        <DataGrid Name="dataGridStudents" AutoGenerateColumns="False" Margin="10">
+        <DataGrid Name="dataGridStudents" AutoGenerateColumns="False" Margin="10" SelectionChanged="dataGridStudents_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Név" Binding="{Binding Nev}" />
                 <DataGridTextColumn Header="Átlag" Binding="{Binding Atlag}" />
                 <DataGridCheckBoxColumn Header="Lemorzsolódással veszélyeztetett" Binding="{Binding IsAtRisk}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="dataGridSubjects" AutoGenerateColumns="False" Margin="10,250,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tantárgy" Binding="{Binding Nev}" />
+                <DataGridTextColumn Header="Átlag" Binding="{Binding Atlag}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

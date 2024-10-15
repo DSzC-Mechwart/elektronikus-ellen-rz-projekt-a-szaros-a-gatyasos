@@ -20,25 +20,29 @@ namespace WpfApp1
                 new Tanulo { Nev = "Kiss Péter", Targyak = new List<Targy>
                     {
                         new Targy { Nev = "Matematika" },
-                        new Targy { Nev = "Magyar" }
+                        new Targy { Nev = "Magyar" },
+                        new Targy { Nev = "Fizika" }
                     }
                 },
                 new Tanulo { Nev = "Nagy Anna", Targyak = new List<Targy>
                     {
                         new Targy { Nev = "Történelem" },
-                        new Targy { Nev = "Angol" }
+                        new Targy { Nev = "Angol" },
+                        new Targy { Nev = "Kémia" }
                     }
                 },
                 new Tanulo { Nev = "Tóth Gábor", Targyak = new List<Targy>
                     {
-                        new Targy { Nev = "Fizika" },
-                        new Targy { Nev = "Kémia" }
+                        new Targy { Nev = "Biológia" },
+                        new Targy { Nev = "Informatika" },
+                        new Targy { Nev = "Földrajz" }
                     }
                 },
                 new Tanulo { Nev = "Szabó Laura", Targyak = new List<Targy>
                     {
-                        new Targy { Nev = "Biológia" },
-                        new Targy { Nev = "Informatika" }
+                        new Targy { Nev = "Zene" },
+                        new Targy { Nev = "Tánc" },
+                        new Targy { Nev = "Rajz" }
                     }
                 }
             };
@@ -75,22 +79,10 @@ namespace WpfApp1
         {
             if (kivalasztottTanulo != null)
             {
-                bool isAtRisk = false;
-
-                foreach (var targy in kivalasztottTanulo.Targyak)
-                {
-                    double atlag = targy.Atlag;
-                    if (atlag < 1.75)
-                    {
-                        isAtRisk = true;
-                        break;
-                    }
-                }
-
+                bool isAtRisk = kivalasztottTanulo.Targyak.Count(t => t.Atlag < 1.75) >= 3;
                 lemorzsolodasCheckBox.IsChecked = isAtRisk;
             }
         }
-
 
         private void FrissitJegyek()
         {
@@ -108,7 +100,8 @@ namespace WpfApp1
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Admin nézet megnyitása.");
+            var adminWindow = new AdminWindow(tanulok);
+            adminWindow.ShowDialog();
         }
     }
 }
