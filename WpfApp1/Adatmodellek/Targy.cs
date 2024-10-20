@@ -1,22 +1,13 @@
-﻿using Adatmodellek;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-public class Targy
+namespace Adatmodellek
 {
-    public string Nev { get; set; }
-    public List<Jegy> Jegyek { get; set; } = new List<Jegy>();
-
-    public double Atlag
+    public class Targy
     {
-        get
-        {
-            if (Jegyek.Count == 0) return 0;
-            double sum = 0;
-            foreach (var jegy in Jegyek)
-            {
-                sum += jegy.Ertek;
-            }
-            return sum / Jegyek.Count;
-        }
+        public string Nev { get; set; }
+        public List<Jegy> Jegyek { get; set; } = new List<Jegy>();
+
+        public double Atlag => Jegyek.Count > 0 ? Jegyek.Average(j => j.Ertek) : 0;
     }
 }

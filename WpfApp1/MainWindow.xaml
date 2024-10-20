@@ -1,39 +1,46 @@
 ﻿<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Tanuló Bejelentkezés" Height="500" Width="800">
+        Title="Elektronikus Ellenőrző" 
+        Width="1200" 
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="#A8D3E0">
     <Grid>
         <StackPanel>
-            <TextBlock Text="Válassz egy tanulót:" FontWeight="Bold" Margin="10"/>
-            <ComboBox x:Name="tanuloComboBox" DisplayMemberPath="Nev" SelectionChanged="tanuloComboBox_SelectionChanged" Margin="10"/>
+            <TextBlock Text="Válassz egy tanulót:" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#003D4D"/>
+            <ComboBox x:Name="tanuloComboBox" DisplayMemberPath="Nev" SelectionChanged="tanuloComboBox_SelectionChanged" Margin="10" Height="30" Background="#E1F5F6"/>
 
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Tantárgyak:" FontWeight="Bold" Margin="10"/>
-                <ComboBox x:Name="targyComboBox" DisplayMemberPath="Nev" Margin="10"/>
-            </StackPanel>
+            <TextBlock Text="Válassz egy tantárgyat:" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#003D4D"/>
+            <ComboBox x:Name="targyComboBox" DisplayMemberPath="Nev" Margin="10" Height="30" Background="#E1F5F6"/>
 
-            <TextBlock Text="Adj hozzá jegyet:" FontWeight="Bold" Margin="10"/>
+            <TextBlock Text="Adj hozzá jegyet:" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#003D4D"/>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <StackPanel Margin="10">
                     <TextBlock Text="Jegy értéke" FontWeight="Bold"/>
-                    <TextBox x:Name="jegyErtekTextBox" Width="100"/>
+                    <TextBox x:Name="jegyErtekTextBox" Width="100" Background="#E1F5F6" BorderBrush="#A8D3E0" BorderThickness="1"/>
                 </StackPanel>
                 <StackPanel Margin="10">
                     <TextBlock Text="Téma" FontWeight="Bold"/>
-                    <TextBox x:Name="jegyTemaTextBox" Width="200"/>
+                    <TextBox x:Name="jegyTemaTextBox" Width="200" Background="#E1F5F6" BorderBrush="#A8D3E0" BorderThickness="1"/>
                 </StackPanel>
                 <StackPanel Margin="10">
                     <TextBlock Text="Számonkérés típusa" FontWeight="Bold"/>
-                    <TextBox x:Name="szamonkeresTipusTextBox" Width="200"/>
+                    <TextBox x:Name="szamonkeresTipusTextBox" Width="200" Background="#E1F5F6" BorderBrush="#A8D3E0" BorderThickness="1"/>
                 </StackPanel>
-                <Button Content="Jegy hozzáadása" Click="AddJegy_Click" Margin="10"/>
+                <Button Content="Jegy hozzáadása" Click="AddJegy_Click" Margin="10" Background="#A8D3E0" Foreground="#003D4D" BorderBrush="Transparent"/>
             </StackPanel>
 
-            <TextBlock Text="Átlagok:" FontWeight="Bold" Margin="10"/>
-            <ListBox x:Name="jegyekListBox" Margin="10"/>
+            <TextBlock Text="Átlagok:" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#003D4D"/>
+            <ListBox x:Name="jegyekListBox" Margin="10" Height="150" Background="#E1F5F6" BorderBrush="#A8D3E0" BorderThickness="1"/>
+            <ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto" Height="200">
+                <StackPanel x:Name="jegyekScrollPanel">
+                </StackPanel>
+            </ScrollViewer>
 
-            <CheckBox x:Name="lemorzsolodasCheckBox" Content="Lemorzólással veszélyeztetett" IsEnabled="False" Margin="10"/>
-            <Button Content="Admin nézet" Click="AdminButton_Click" Margin="10"/>
+            <CheckBox x:Name="lemorzsolodasCheckBox" Content="Lemorzsolódással veszélyeztetett" IsEnabled="False" Margin="10"/>
+            <Button Content="Admin nézet" Click="AdminButton_Click" Margin="10" Background="#A8D3E0" Foreground="#003D4D" BorderBrush="Transparent"/>
         </StackPanel>
     </Grid>
 </Window>

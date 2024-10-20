@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using Adatmodellek;
 using System.Collections.Generic;
-using Adatmodellek;
-using System.Windows.Controls;
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -16,15 +15,11 @@ namespace WpfApp1
             dataGridStudents.ItemsSource = tanulok;
         }
 
-        private void dataGridStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dataGridStudents_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (dataGridStudents.SelectedItem is Tanulo selectedTanulo)
             {
                 dataGridSubjects.ItemsSource = selectedTanulo.Targyak;
-            }
-            else
-            {
-                dataGridSubjects.ItemsSource = null;
             }
         }
     }
