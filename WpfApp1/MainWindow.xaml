@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Elektronikus Ellenőrző" 
         Width="1200" 
-        Height="850"
+        Height="930"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         Background="#FFF8F3">
@@ -35,9 +35,11 @@
             <TextBlock Text="Átlagok:" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#405D72"/>
             <ListBox x:Name="jegyekListBox" Margin="10" Height="150" Background="#F7E7DC" BorderBrush="#758694" BorderThickness="1"/>
             <ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto" Height="200">
-                <StackPanel x:Name="jegyekScrollPanel">
-                </StackPanel>
+                <StackPanel x:Name="jegyekScrollPanel"/>
             </ScrollViewer>
+
+            <TextBlock Text="" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#405D72"/>
+            <TextBlock x:Name="osszesitettAtlagTextBlock" FontWeight="Bold" FontSize="16" Margin="10" Foreground="#405D72"/>
 
             <CheckBox x:Name="lemorzsolodasCheckBox" Content="Lemorzsolódással veszélyeztetett" IsEnabled="False" Margin="10" Foreground="#405D72"/>
             <Button Content="Admin nézet" Click="AdminButton_Click" Margin="10" Background="#405D72" Foreground="#FFF8F3" BorderBrush="Transparent"/>

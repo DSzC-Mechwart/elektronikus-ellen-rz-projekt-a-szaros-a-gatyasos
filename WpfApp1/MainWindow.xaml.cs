@@ -58,9 +58,9 @@ namespace WpfApp1
                 targyComboBox.ItemsSource = kivalasztottTanulo.Targyak;
                 FrissitJegyek();
                 FrissitLemorzsolodas();
+                FrissitOsszesitettAtlag();
             }
         }
-
 
         private void FrissitLemorzsolodas()
         {
@@ -86,6 +86,7 @@ namespace WpfApp1
 
                 FrissitJegyek();
                 FrissitLemorzsolodas();
+                FrissitOsszesitettAtlag();
             }
         }
 
@@ -123,11 +124,31 @@ namespace WpfApp1
             }
         }
 
+        private void FrissitOsszesitettAtlag()
+        {
+            if (kivalasztottTanulo != null)
+            {
+                double osszesitettAtlag = kivalasztottTanulo.Targyak.Count > 0
+                    ? kivalasztottTanulo.Targyak.Average(t => t.Atlag)
+                    : 0;
+
+                if (osszesitettAtlag > 0)
+                {
+                    osszesitettAtlagTextBlock.Text = $"Összesített átlag: {osszesitettAtlag:F2}";
+                }
+                else
+                {
+                    osszesitettAtlagTextBlock.Text = string.Empty;
+                }
+            }
+        }
+
+
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             var adminWindow = new AdminWindow(tanulok);
-            adminWindow.ShowDialog();
+            adminWindow.Show();
         }
     }
 }
