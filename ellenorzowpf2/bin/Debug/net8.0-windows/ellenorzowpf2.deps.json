@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ellenorzowpf2/1.0.0": {
+        "runtime": {
+          "ellenorzowpf2.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ellenorzowpf2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

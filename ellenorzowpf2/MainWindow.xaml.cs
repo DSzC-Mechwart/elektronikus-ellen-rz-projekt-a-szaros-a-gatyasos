@@ -69,7 +69,6 @@ namespace ellenorzowpf2
         }
         public void Feladat2()
         {
-            Feladat1();
             string json = JsonSerializer.Serialize(AllData);
             string file = System.IO.Directory.GetCurrentDirectory();
             File.WriteAllText($@"{file}\tantargy.json", json, Encoding.UTF8);
@@ -77,7 +76,6 @@ namespace ellenorzowpf2
         }
         public void Feladat3()
         {
-            Feladat1();
             string fileName = System.IO.Directory.GetCurrentDirectory();
             using (StreamWriter sw = new($@"{fileName}\tantargy.csv", true, Encoding.UTF8))
             {
@@ -87,11 +85,13 @@ namespace ellenorzowpf2
         }
         private void CsvMentes_Click(object sender, RoutedEventArgs e)
         {
+            Feladat1();
             Feladat3();
         }
 
         private void JsonMentes_Click(object sender, RoutedEventArgs e)
         {
+            Feladat1();
             Feladat2();
         }
         
@@ -132,12 +132,81 @@ namespace ellenorzowpf2
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in AllData)
+            Kimutatast();
+
+        }
+        public void Kimutatast()
+        {
+            var kimutatas = new StringBuilder();
+
+            var csoportok = AllData.GroupBy(x => x.Evfolyam)
+                .OrderBy(x => x.Key);  
+
+            foreach (var evfolyamCsoport in csoportok)
             {
-               int kozism= AllData.Where(x => x.Kozvszak == "Közismeret").GroupBy(x=>x.Evfolyam).Count();
-               int szakma = AllData.Where(x => x.Kozvszak == "Szakma").GroupBy(x => x.Evfolyam).Count();
+                int evfolyam = evfolyamCsoport.Key;
+
+               
+                var szakmaiCsoportok = evfolyamCsoport.GroupBy(x => x.Kozvszak)
+                    .OrderBy(x => x.Key);
+
+                kimutatas.AppendLine($"Évfolyam: {evfolyam}");
+
+                int osszesKozismeretiOra = 0;
+                int osszesSzakmaiOra = 0;
+
+                foreach (var szakCsoport in szakmaiCsoportok)
+                {
+                    string szakma = szakCsoport.Key;
+                    int tantargySzam = szakCsoport.Count();
+                    int osszOraszam = szakCsoport.Sum(x => x.EvesOraSzam);
+
+                    kimutatas.AppendLine($"  {szakma}: {tantargySzam} tantárgy, {osszOraszam} óra");
+
+                    if (szakma == "Közismeret")
+                    {
+                        osszesKozismeretiOra += osszOraszam;
+                    }
+                    else if (szakma == "Szakma")
+                    {
+                        osszesSzakmaiOra += osszOraszam;
+                    }
+                }
+
+                int osszesOra = osszesKozismeretiOra + osszesSzakmaiOra;
+
+               
+                kimutatas.AppendLine($"  Összes közismereti óraszám: {osszesKozismeretiOra}");
+                kimutatas.AppendLine($"  Összes szakmai óraszám: {osszesSzakmaiOra}");
+                kimutatas.AppendLine($"  Összesített óraszám: {osszesOra}");
+                kimutatas.AppendLine();
             }
 
+           
+            kimutatasTextBlock.Text = kimutatas.ToString();
+        }
+        Dictionary<string, List<string>> tanuloTantargyak = new Dictionary<string, List<string>>();
+
+        private void HozzarendelesButton_Click(object sender, RoutedEventArgs e)
+        {
+            string kivantTanulo = (comboboxTanulo.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string kivantTantargy = (comboboxTan.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            if (kivantTanulo != null && kivantTantargy != null)
+            {
+                if (!tanuloTantargyak.ContainsKey(kivantTanulo))
+                {
+                    tanuloTantargyak[kivantTanulo] = new List<string>();
+                }
+
+                tanuloTantargyak[kivantTanulo].Add(kivantTantargy);
+
+                listBoxTantargyak.Items.Clear();
+                foreach (var tantargy in tanuloTantargyak[kivantTanulo])
+                {
+                    listBoxTantargyak.Items.Add(tantargy);
+                }
+            }
         }
     }
     
